@@ -9,6 +9,7 @@ float substraction(float num1, float num2);
 float multiplication(float num1, float num2);
 float division(float num1, float num2);
 void menu();
+void inputdata();
 int module(int num1, int num2);
   //Global variables
 char option;
@@ -41,22 +42,19 @@ int main(){
         //Defined variables inside the calculator funcion
         float result = 0.0;
         
-        //Enter the global variables before show the menu
-        cout<<"Enter the first value: ";cin>>num1;
-        cout<<"Enter the second value: "; cin>>num2;
-        //menu y opciones para continuar
+        //ask for the input of the global variables before show the menu
+        inputdata();
+        //call menu function
         menu();
             //Use of switch to choose an option
             //Inside of a do while cicle to repeat itself in case they enter an invalid option
-            // Tolower to convert any characther in lowercase
+            //For each case calls the function and gives the data that was entered in the datainput() function
             switch (option){
                 case 'a':result = sum(num1,num2);
                     break;
                 case 'b': result=substraction(num1, num2);
                     break;
                 case'c':result= multiplication(num1, num2);
-               
-                 
                     break;
                 case'd':
                 if (num2==0){
@@ -72,7 +70,11 @@ int main(){
             }
         return result;
     }
+
     void menu(){
+        //displays options then aks for an option in char
+        //option redifened with tolower to turn any characthers in lowercase
+        //while to display menu until a valid character is entered
         do {
             cout<<"a) SUM"<<endl;
             cout<<"b) SUBSTRACTION"<<endl;
@@ -84,19 +86,29 @@ int main(){
             option=tolower(option);
         }while (option <'a'|| option > 'e');
     }
+    void inputdata(){
+        cout<<"Enter the first value: ";cin>>num1;
+        cout<<"Enter the second value: "; cin>>num2;
+    }
+
+        //sum the 2 entry data
         float sum(float num1, float num2){
             return num1+num2;
         }
+        //substract the 2 entry data
         float substraction(float num1, float num2){
             return num1-num2;
-         
         }
+        //multiplicates the 2 entry data
         float multiplication(float num1, float num2){
             return num1*num2;
         }
+        //divides the 2 entry data
+        //There is a code in the switch to impide and inf return.The function does the operation but it isn't displayed it
         float division(float num1, float num2){
             return num1/num2;
         }
+        //Converts the entry data in int and then it makes the module operation
         int module(int num1, int num2){
             return num1%num2;
         }
