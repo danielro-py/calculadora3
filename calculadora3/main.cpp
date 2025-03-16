@@ -1,41 +1,34 @@
 #include <iostream>
+#include <math.h>
 using std::cout;
 using std::cin;
 using std::endl;
 //Define functions and input type data.
+//We use float to calculate an acurate value
 float calculator();
 float sum(float num1, float num2);
 float substraction(float num1, float num2);
 float multiplication(float num1, float num2);
 float division(float num1, float num2);
+long square(float num1, float num2);
 void menu();
 void inputdata();
 int module(int num1, int num2);
   //Global variables
 char option;
 float num1, num2;
-int main(){
-    
-  
+    int main(){
         // We defined our variables inside of the main function
         float r;
         int yes;
         //Do while cicle to continue until otherwise is said(From the call of the calculator function)
         do {
-            
             r =  calculator();
             cout<<"The result is: "<<r<<endl;
-            cout<<"";
             cout<<"Continue: (1) Exit: (2) ---> ";
             cin>>yes;
-            
-      
-           
-            
-        
-        } while (yes==1);
+            } while (yes==1);
         return 0;
-       
     }
     //Calculator function
     float calculator(){
@@ -57,6 +50,7 @@ int main(){
                 case'c':result= multiplication(num1, num2);
                     break;
                 case'd':
+                //in case num2 equals 0 the case will return 0 if not it will proceed as always
                 if (num2==0){
                     cout<<"Invalid operation"<<endl;
                     return 0;
@@ -66,11 +60,9 @@ int main(){
                     break;
                 case'e':result=module(num1, num2);
                     break;
-                    
             }
         return result;
     }
-
     void menu(){
         //displays options then aks for an option in char
         //option redifened with tolower to turn any characthers in lowercase
@@ -93,23 +85,33 @@ int main(){
 
         //sum the 2 entry data
         float sum(float num1, float num2){
-            return num1+num2;
+            return num1+num2; //return the sum of the two numbers
         }
         //substract the 2 entry data
         float substraction(float num1, float num2){
-            return num1-num2;
+            return num1-num2;//return substraction
         }
         //multiplicates the 2 entry data
         float multiplication(float num1, float num2){
-            return num1*num2;
+            return num1*num2; //return multiplication
         }
         //divides the 2 entry data
-        //There is a code in the switch to impide and inf return.The function does the operation but it isn't displayed it
+        //There is a code in the switch to impide and inf return.
         float division(float num1, float num2){
-            return num1/num2;
+            return num1/num2; //return the division
         }
         //Converts the entry data in int and then it makes the module operation
         int module(int num1, int num2){
-            return num1%num2;
+            return num1%num2; //return modulo of num1 and num2
         }
+//THIS FUNCTION IS NOT CALLED. CALLED UNTIL IS SHOWN IN CLASS
+//extra feature
+//function for elevating num1 by times num2
+long square(float num1, float num2){
+    long result = 1;
+    for (float i=1; i<=num2; i++) {
+    result *=num1;
+    }
+    return result; //return the result of each iteration being multiplicated by itself meanwhile i is less than the input 2 (num2)
+}
     
