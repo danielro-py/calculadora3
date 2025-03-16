@@ -50,7 +50,7 @@ float num1, num2;
                 case'c':result= multiplication(num1, num2);
                     break;
                 case'd':
-                //in case num2 equals 0 the case will return 0 if not it will proceed as always
+                //in case num2 equals 0 the case will return 0 otherwise it will proceed as always
                 if (num2==0){
                     cout<<"Invalid operation"<<endl;
                     return 0;
@@ -61,7 +61,7 @@ float num1, num2;
                 case'e':result=module(num1, num2);
                     break;
             }
-        return result;
+        return result; //It returns the result depending which function is called
     }
     void menu(){
         //displays options then aks for an option in char
@@ -78,6 +78,8 @@ float num1, num2;
             option=tolower(option);
         }while (option <'a'|| option > 'e');
     }
+// Ask for the data to the user
+// Then is stored in the global variables that were declared in the start of the code
     void inputdata(){
         cout<<"Enter the first value: ";cin>>num1;
         cout<<"Enter the second value: "; cin>>num2;
